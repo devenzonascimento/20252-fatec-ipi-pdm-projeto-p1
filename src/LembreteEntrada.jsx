@@ -18,7 +18,7 @@ class LembreteEntrada extends React.Component {
 
   render() {
     return (
-      <div className="d-sm-flex d-block align-items-center">
+      <div className="mt-4 d-sm-flex d-block align-items-center">
         <input
           type="text"
           className="form-control"
