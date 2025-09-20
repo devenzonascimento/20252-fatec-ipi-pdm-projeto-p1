@@ -1,10 +1,22 @@
+import React from "react";
+import LembreteEntrada from "./LembreteEntrada";
 
-function App() {
-  return (
-    <div className="container mt-2">
-          <h1 className="text-center">Hello, Lembretes</h1>
-        </div>
-  )
+class App extends React.Component {
+  state = {
+    lembretes: [],
+  };
+
+  aoAdicionar = (lembrete) => {
+    this.setState({ lembretes: [lembrete, ...this.state.lembretes] });
+  };
+
+  render() {
+    return (
+      <div className="container mt-2">
+        <LembreteEntrada aoAdicionar={this.aoAdicionar} />
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
