@@ -7,7 +7,9 @@ class App extends React.Component {
   };
 
   aoAdicionar = (lembrete) => {
-    this.setState({ lembretes: [lembrete, ...this.state.lembretes] });
+    this.state.lembretes.push(lembrete)
+    
+    this.setState({ lembretes: this.state.lembretes });
   };
 
   render() {
