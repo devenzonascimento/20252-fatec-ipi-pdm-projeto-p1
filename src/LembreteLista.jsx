@@ -15,7 +15,11 @@ class LembreteLista extends React.Component {
                     <i className="fa-solid fa-star" />
                   </button>
 
-                  <button class="ms-2 btn btn-light">
+                  <button
+                    title="Remover"
+                    class="ms-2 btn btn-light"
+                    onClick={() => this.props.aoRemover(lembrete)}
+                  >
                     <i className="fa-solid fa-trash" />
                   </button>
                 </div>
