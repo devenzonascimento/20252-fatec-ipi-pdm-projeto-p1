@@ -29,7 +29,7 @@ class LembreteEntrada extends React.Component {
 
         <button
           type="button"
-          className="btn btn-primary col-12 col-sm-3 ms-sm-2 mt-sm-0 mt-2"
+          className="btn btn-primary col-12 mt-2 col-sm-3 ms-sm-2 mt-sm-0"
           onClick={this.aoConfirmar}
         >
           Adicionar
