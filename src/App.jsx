@@ -7,22 +7,18 @@ class App extends React.Component {
     lembretes: [],
   };
 
-  aoAdicionar = (lembrete) => {
-    this.state.lembretes.push(lembrete)
+  aoAdicionar = (tituloDoLembrete) => {
+    const lembrete = { titulo: tituloDoLembrete, favorito: false };
 
+    this.state.lembretes.push(lembrete)
+    
     this.setState({ lembretes: this.state.lembretes });
   };
 
   render() {
     return (
       <div className="container mt-2">
-        <LembreteLista
-          lembretes={[
-            { titulo: "Preparar aula de programação", favorito: true },
-            { titulo: "Fazer feira", favorito: false },
-            { titulo: "Preparar marmitas", favorito: false },
-          ]}
-        />
+        <LembreteLista lembretes={this.state.lembretes} />
         <LembreteEntrada aoAdicionar={this.aoAdicionar} />
       </div>
     );

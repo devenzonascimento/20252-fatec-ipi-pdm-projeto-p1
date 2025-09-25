@@ -4,23 +4,29 @@ class LembreteLista extends React.Component {
   render() {
     return (
       <div className="card">
-        <ul class="list-group list-group-flush">
-          {this.props.lembretes.map((lembrete) => (
-            <li class="list-group-item d-flex align-items-center justify-content-between">
-              <span>{lembrete.titulo}</span>
+        {this.props.lembretes.length > 0 ? (
+          <ul class="list-group list-group-flush">
+            {this.props.lembretes.map((lembrete) => (
+              <li class="list-group-item d-flex align-items-center justify-content-between">
+                <span>{lembrete.titulo}</span>
 
-              <div className="d-flex align-items-center">
-                <button class="btn btn-light">
-                  <i className="fa-solid fa-star" />
-                </button>
+                <div className="d-flex align-items-center">
+                  <button class="btn btn-light">
+                    <i className="fa-solid fa-star" />
+                  </button>
 
-                <button class="ms-2 btn btn-light">
-                  <i className="fa-solid fa-trash" />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                  <button class="ms-2 btn btn-light">
+                    <i className="fa-solid fa-trash" />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="w-100 py-5 d-flex align-items-center justify-content-center">
+            <p className="m-0 text-center">Nenhum lembrete adicionado</p>
+          </div>
+        )}
       </div>
     );
   }
