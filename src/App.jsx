@@ -1,4 +1,5 @@
 import React from "react";
+import LembreteLista from "./LembreteLista";
 import LembreteEntrada from "./LembreteEntrada";
 
 class App extends React.Component {
@@ -8,13 +9,20 @@ class App extends React.Component {
 
   aoAdicionar = (lembrete) => {
     this.state.lembretes.push(lembrete)
-    
+
     this.setState({ lembretes: this.state.lembretes });
   };
 
   render() {
     return (
       <div className="container mt-2">
+        <LembreteLista
+          lembretes={[
+            { titulo: "Preparar aula de programação", favorito: true },
+            { titulo: "Fazer feira", favorito: false },
+            { titulo: "Preparar marmitas", favorito: false },
+          ]}
+        />
         <LembreteEntrada aoAdicionar={this.aoAdicionar} />
       </div>
     );
