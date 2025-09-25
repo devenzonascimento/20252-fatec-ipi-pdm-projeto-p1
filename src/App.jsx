@@ -10,7 +10,9 @@ class App extends React.Component {
   aoAdicionar = (tituloDoLembrete) => {
     const lembrete = { titulo: tituloDoLembrete, favorito: false };
 
-    this.setState({ lembretes: [lembrete, ...this.state.lembretes] });
+    this.state.lembretes.push(lembrete)
+    
+    this.setState({ lembretes: this.state.lembretes });
   };
 
   render() {
