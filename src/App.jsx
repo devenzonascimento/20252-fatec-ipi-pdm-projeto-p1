@@ -64,13 +64,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container mt-5">
-        <div class="d-flex justify-content-end mb-4">
+      <div className="vh-100 container py-4 bg-dark">
+        <LembreteEntrada aoAdicionar={this.aoAdicionar} />
+
+        <div class="my-3 bg-dark-subtle p-2 rounded">
           <button
             type="button"
-            className={`btn btn-primary ${this.state.mostrarApenasFavoritos
-              ? "bg-warning border-warning"
-              : "bg-secondary border-secondary"
+            className={`btn btn-primary col-6 ${this.state.mostrarApenasFavoritos
+              ? "bg-transparent border-0"
+              : "bg-primary"
+              }`}
+            onClick={this.aoAlternarFiltro}
+          >
+            Todos
+          </button>
+          <button
+            type="button"
+            className={`btn btn-primary col-6 ${this.state.mostrarApenasFavoritos
+              ? "bg-primary"
+              : "bg-transparent border-0"
               }`}
             onClick={this.aoAlternarFiltro}
           >
@@ -83,8 +95,6 @@ class App extends React.Component {
           aoFavoritar={this.aoFavoritar}
           aoRemover={this.aoRemover}
         />
-
-        <LembreteEntrada aoAdicionar={this.aoAdicionar} />
       </div>
     );
   }

@@ -18,10 +18,10 @@ class LembreteEntrada extends React.Component {
 
   render() {
     return (
-      <div className="mt-4 d-sm-flex d-block align-items-center">
+      <div className="d-flex align-items-center">
         <input
           type="text"
-          className="form-control"
+          className="form-control bg-dark-subtle"
           placeholder="Digite seu novo lembrete..."
           value={this.state.tituloDoLembrete}
           onChange={this.aoDigitar}
@@ -29,10 +29,11 @@ class LembreteEntrada extends React.Component {
 
         <button
           type="button"
-          className="btn btn-primary col-12 mt-2 col-sm-3 ms-sm-2 mt-sm-0"
+          title="Adicionar lembrete"
+          class="ms-2 btn btn-primary"
           onClick={this.aoConfirmar}
         >
-          Adicionar
+          <i className="fa-solid fa-plus" />
         </button>
       </div>
     );
