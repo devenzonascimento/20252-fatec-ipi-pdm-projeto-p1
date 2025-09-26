@@ -12,6 +12,10 @@ class LembreteEntrada extends React.Component {
   };
 
   aoConfirmar = () => {
+    if (!this.state.tituloDoLembrete) {
+      return;
+    }
+
     this.props.aoAdicionar(this.state.tituloDoLembrete);
     this.setState({ tituloDoLembrete: "" });
   };
@@ -32,6 +36,7 @@ class LembreteEntrada extends React.Component {
           title="Adicionar lembrete"
           class="ms-2 btn btn-primary"
           onClick={this.aoConfirmar}
+          disabled={!this.state.tituloDoLembrete}
         >
           <i className="fa-solid fa-plus" />
         </button>
