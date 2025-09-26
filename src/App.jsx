@@ -5,6 +5,7 @@ import LembreteEntrada from "./LembreteEntrada";
 class App extends React.Component {
   state = {
     lembretes: [],
+    mostrarApenasFavoritos: false,
   };
 
   aoAdicionar = (tituloDoLembrete) => {
@@ -12,7 +13,10 @@ class App extends React.Component {
 
     this.state.lembretes.push(lembrete)
 
-    this.setState({ lembretes: this.state.lembretes });
+    this.setState({
+      lembretes: this.state.lembretes,
+      mostrarApenasFavoritos: this.state.mostrarApenasFavoritos,
+    });
   };
 
   aoFavoritar = (lembreteParaFavoritar) => {
@@ -24,7 +28,10 @@ class App extends React.Component {
       return lembrete
     })
 
-    this.setState({ lembretes: novaListaDeLembretes });
+    this.setState({
+      lembretes: novaListaDeLembretes,
+      mostrarApenasFavoritos: this.state.mostrarApenasFavoritos,
+    });
   };
 
   aoRemover = (lembreteParaRemover) => {
@@ -32,17 +39,51 @@ class App extends React.Component {
       lembrete => lembrete !== lembreteParaRemover
     )
 
-    this.setState({ lembretes: novaListaDeLembretes });
+    this.setState({
+      lembretes: novaListaDeLembretes,
+      mostrarApenasFavoritos: this.state.mostrarApenasFavoritos,
+    });
   };
+
+  aoAlternarFiltro = () => {
+    this.setState({
+      lembretes: this.state.lembretes,
+      mostrarApenasFavoritos: !this.state.mostrarApenasFavoritos,
+    });
+  };
+
+  filtrarListaDeLembretes = (todosLembretes) => {
+    return todosLembretes.filter(lembrete => {
+      if (this.state.mostrarApenasFavoritos) {
+        return lembrete.favorito
+      }
+
+      return true
+    })
+  }
 
   render() {
     return (
-      <div className="container mt-2">
+      <div className="container mt-5">
+        <div class="d-flex justify-content-end mb-4">
+          <button
+            type="button"
+            className={`btn btn-primary ${this.state.mostrarApenasFavoritos
+              ? "bg-warning border-warning"
+              : "bg-secondary border-secondary"
+              }`}
+            onClick={this.aoAlternarFiltro}
+          >
+            Apenas favoritos
+          </button>
+        </div>
+
         <LembreteLista
-          lembretes={this.state.lembretes}
+          lembretes={this.filtrarListaDeLembretes(this.state.lembretes)}
           aoFavoritar={this.aoFavoritar}
           aoRemover={this.aoRemover}
         />
+
         <LembreteEntrada aoAdicionar={this.aoAdicionar} />
       </div>
     );

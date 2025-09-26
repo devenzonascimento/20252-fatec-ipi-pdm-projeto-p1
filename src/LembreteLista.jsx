@@ -18,8 +18,8 @@ class LembreteLista extends React.Component {
                   >
                     <i
                       className={`fa-star ${lembrete.favorito
-                        ? "fa-solid text-warning"
-                        : "fa-regular text-dark"
+                          ? "fa-solid text-warning"
+                          : "fa-regular text-dark"
                         }`}
                     />
                   </button>
