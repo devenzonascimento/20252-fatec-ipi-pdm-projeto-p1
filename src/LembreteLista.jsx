@@ -11,8 +11,17 @@ class LembreteLista extends React.Component {
                 <span>{lembrete.titulo}</span>
 
                 <div className="d-flex align-items-center">
-                  <button class="btn btn-light">
-                    <i className="fa-solid fa-star" />
+                  <button
+                    title="Favoritar"
+                    class="btn btn-light"
+                    onClick={() => this.props.aoFavoritar(lembrete)}
+                  >
+                    <i
+                      className={`fa-star ${lembrete.favorito
+                        ? "fa-solid text-warning"
+                        : "fa-regular text-dark"
+                        }`}
+                    />
                   </button>
 
                   <button

@@ -15,6 +15,18 @@ class App extends React.Component {
     this.setState({ lembretes: this.state.lembretes });
   };
 
+  aoFavoritar = (lembreteParaFavoritar) => {
+    const novaListaDeLembretes = this.state.lembretes.map(lembrete => {
+      if (lembrete === lembreteParaFavoritar) {
+        lembrete.favorito = !lembrete.favorito;
+      }
+
+      return lembrete
+    })
+
+    this.setState({ lembretes: novaListaDeLembretes });
+  };
+
   aoRemover = (lembreteParaRemover) => {
     const novaListaDeLembretes = this.state.lembretes.filter(
       lembrete => lembrete !== lembreteParaRemover
@@ -28,6 +40,7 @@ class App extends React.Component {
       <div className="container mt-2">
         <LembreteLista
           lembretes={this.state.lembretes}
+          aoFavoritar={this.aoFavoritar}
           aoRemover={this.aoRemover}
         />
         <LembreteEntrada aoAdicionar={this.aoAdicionar} />
